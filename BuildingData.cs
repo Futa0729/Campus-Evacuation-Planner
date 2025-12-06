@@ -2,11 +2,12 @@ using System.Collections.Generic;
 
 public static class BuildingData
 {
+    //Room -> Start Node
     public static Dictionary<string, string> GetRoomStartNodes()
     {
         return new Dictionary<string, string>
         {
-            // -------- First Floor --------
+            //-------- First Floor --------
             ["122"] = "B",
             ["123"] = "B",
             ["124"] = "B",
@@ -15,14 +16,14 @@ public static class BuildingData
             ["151"] = "H",
             ["154"] = "F",
 
-            // -------- Second Floor --------
+            //-------- Second Floor --------
             ["223"] = "BB",
             ["225"] = "CC",
             ["243"] = "EE",
             ["251"] = "FF",
             ["254"] = "EE",
 
-            // -------- Third Floor --------
+            //-------- Third Floor --------
             ["323"] = "BBB",
             ["324"] = "BBB",
             ["341"] = "FFF",
@@ -34,6 +35,7 @@ public static class BuildingData
         };
     }
 
+    //Set of all exit nodes
     public static HashSet<string> GetExits()
     {
         return new HashSet<string>
@@ -43,6 +45,41 @@ public static class BuildingData
             "Exit3",
             "Exit4",
             "Exit5"
+        };
+    }
+
+    //Students per room(Part 2)
+    public static int GetStudentsPerRoom()
+    {
+        return 30;
+    }
+
+    //nodes to stairwell type
+    public static Dictionary<string, string> GetStairForNode()
+    {
+        return new Dictionary<string, string>
+        {
+            ["AA"] = "Side stairwells",
+            ["GG"] = "Side stairwells",
+            ["DD"] = "Center stairwell",
+        };
+    }
+
+    //Capacity for all choke points (stairs + exits)
+    public static Dictionary<string, int> GetCapacities()
+    {
+        return new Dictionary<string, int>
+        {
+            //Stairwells
+            ["Side stairwells"] = 100,
+            ["Center stairwell"] = 200,
+
+            //Exits
+            ["Exit1"] = 300,
+            ["Exit2"] = 300,
+            ["Exit3"] = 300,
+            ["Exit4"] = 300,
+            ["Exit5"] = 300,
         };
     }
 }
