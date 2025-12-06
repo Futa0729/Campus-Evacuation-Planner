@@ -128,7 +128,5 @@ public static class Part2
             Console.WriteLine("AdjustedTime: " + adjustedTime);
             Console.WriteLine();
         }
-
-        return results;
     }
 }
