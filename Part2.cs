@@ -129,6 +129,5 @@ public static class Part2
             Console.WriteLine();
         }
 
-        return results;
     }
 }
