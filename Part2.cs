@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public static class Part2
 {
-    public static List<PathResult> Run(List<PathResult> results)
+    public static void Run(List<PathResult> results)
     {
         int studentsPerRoom = BuildingData.GetStudentsPerRoom();
         Dictionary<string, string> stairForNode = BuildingData.GetStairForNode();
@@ -15,7 +15,7 @@ public static class Part2
             chokeUsers[pair.Key] = 0;
         }
 
-        // 1. Count how many total students use each stairwell and each exit.
+        // Count students per choke points.
         foreach (var result in results)
         {
             bool usesSide = false;
@@ -50,14 +50,14 @@ public static class Part2
             chokeUsers[result.ExitNode] += studentsPerRoom;
         }
 
-        Console.WriteLine("=== Students per choke point ===");
+        Console.WriteLine("Students per choke point");
         foreach (var choke in chokeUsers)
         {
             Console.WriteLine($"{choke.Key}: {choke.Value} students");
         }
         Console.WriteLine();
 
-        // 2.compute penalty for each choke point (stairwell or exit)
+        // compute penalty for each choke point (stairwell or exit)
         Dictionary<string, double> chokePenalty = new Dictionary<string, double>();
 
         foreach (var choke in chokeUsers)
@@ -77,17 +77,15 @@ public static class Part2
             chokePenalty[choke.Key] = penalty;
         }
 
-        Console.WriteLine("=== Penalties per choke point ===");
+        Console.WriteLine("Penalties per choke point");
         foreach (var choke in chokePenalty)
         {
             Console.WriteLine($"{choke.Key}: {choke.Value} penalty");
         }
         Console.WriteLine();
 
-        //3. compute total penalty
-        Console.WriteLine("=== Room results with congestion ===");
-
-        
+        //compute adjusted time
+        Console.WriteLine("Room results with congestion");
 
         foreach (var result in results)
         {
@@ -121,7 +119,6 @@ public static class Part2
             }
             totalPenalty += chokePenalty[result.ExitNode];
 
-            //4. compute adjusted time
             double adjustedTime = result.TotalWeight * (1.0 + totalPenalty);
 
             Console.WriteLine("Room: " + result.RoomNumber);

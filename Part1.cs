@@ -29,7 +29,7 @@ public static class Part1
             Console.WriteLine($"Path: {string.Join(" -> ", result.PathNodes)}");
             Console.WriteLine();
         }
-
+        
         Console.WriteLine($"Total time in all rooms: {totalTime}");
 
         return results;
